@@ -84,7 +84,7 @@
             box-shadow: 0 8px 25px rgba(0,0,0,0.25);
         }
 
-        /* Posicionamiento de los 7 pétalos en círculo (360 / 7 ≈ 51.4 grados cada uno) */
+        /* Posicionamiento de los 7 pétalos en círculo */
         .p1 { transform: rotate(0deg) translateY(-110px); --rotacion: 0deg; }
         .p2 { transform: rotate(51.4deg) translateY(-110px); --rotacion: 51.4deg; }
         .p3 { transform: rotate(102.8deg) translateY(-110px); --rotacion: 102.8deg; }
@@ -149,7 +149,7 @@
             to { transform: scale(1); opacity: 1; }
         }
 
-        /* Botón para reproducir música si el navegador bloquea el autoplay */
+        /* Botón de música discreto */
         .music-btn {
             background: rgba(255, 255, 255, 0.2);
             border: 2px solid #fff;
@@ -171,7 +171,7 @@
     <h1>Tocá cada pétalo ❤️</h1>
 
     <div class="container">
-        <!-- Pétalos con tus textos -->
+        <!-- Pétalos -->
         <div class="petalo p1" onclick="mostrarMensaje('Pétalo 1', '¿Sabés qué recuerdo me encanta? Esas noches en las que me quedaba en tu casa viendo películas juntos. Capaz para cualquiera era simplemente ver una película, pero para mí eran momentos simples que se volvían especiales solamente porque estaba con vos. ❤️')"><span>🌸</span></div>
         <div class="petalo p2" onclick="mostrarMensaje('Pétalo 2', 'Hay algo de vos que me encanta muchísimo: la forma en la que me hacés sentir amado. Me encanta cuando te agarra esa locura de amor y empezás a abrazarme, besarme y decirme cuánto me amás. Me encanta verte así y sentir todo ese amor que tenés por mí. 🥰❤️')"><span>🌸</span></div>
         <div class="petalo p3" onclick="mostrarMensaje('Pétalo 3', 'Gracias por cada sonrisa, por cada abrazo y por estar siempre a mi lado en cada momento. ✨')"><span>🌸</span></div>
@@ -180,7 +180,7 @@
         <div class="petalo p6" onclick="mostrarMensaje('Pétalo 6', 'Quiero que siempre estemos juntos y que nos amemos tanto o más que ahora. Quiero seguir compartiendo momentos con vos, seguir riéndonos, seguir haciendo recuerdos y seguir viviendo muchas cosas juntos. ❤️')"><span>🌸</span></div>
         <div class="petalo p7" onclick="mostrarMensaje('Pétalo 7', 'Eres lo más hermoso e importante que me pasó. Sos todo lo que está bien. Cuando todo se me cae y las cosas están mal, estás vos para hacerme levantar. Te amo demasiado. ❤️')"><span>🌸</span></div>
 
-        <!-- Centro de la flor -->
+        <!-- Centro -->
         <div class="centro" onclick="mostrarMensaje('Nuestra foto', 'Sos mi persona favorita en el mundo entero. Te amo hoy y siempre. ❤️')">
             <img src="nuestra-foto.jpg" alt="Nuestra foto">
         </div>
@@ -188,16 +188,16 @@
 
     <button class="music-btn" onclick="toggleMusica()">🎵 Reproducir / Pausar Música</button>
 
-    <!-- Modal de mensajes -->
+    <!-- Modal -->
     <div class="modal" id="modalMensaje">
         <div class="modal-content">
             <h3 id="modalTitulo">Título</h3>
-            <p id="modalTexto">Texto del pétalo</p>
+            <p id="modalTexto">Texto</p>
             <button class="cerrar-btn" onclick="cerrarModal()">Cerrar</button>
         </div>
     </div>
 
-    <!-- Audio de fondo -->
+    <!-- Audio (sin reproducción automática forzada para evitar que suene solo de golpe) -->
     <audio id="musicaFondo" loop>
         <source src="cancion.mp3" type="audio/mp3">
         Tu navegador no soporta audio.
@@ -213,8 +213,6 @@
             modalTitulo.innerText = titulo;
             modalTexto.innerText = texto;
             modal.style.display = 'flex';
-            // Intenta reproducir la música al hacer clic en un pétalo por primera vez
-            audio.play().catch(() => {});
         }
 
         function cerrarModal() {
